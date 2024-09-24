@@ -19,32 +19,51 @@
 
 ```tsx
 const ComponentA = () => {
-	console.log('a');
-	return(
-		<img src='example.png'/>
-	)
+	console.log("a");
+	return <img src="example.png"/>;
 }
 
 const ComponentB = () => {
-	console.log('b');
-	return(
-		<ComponentA/>
-	)
-}
+	console.log("b");
+	return <ComponentA />;
+};
 
 const ComponentC = () => {
-	console.log('c');
-	return(
-		<ComponentB/>
-	)
-}
+	console.log("c");
+	return <ComponentB />;
+};
 
-//
-
-<ComponentC/>
-
+export default function App() {
+  return <ComponentC />;
+};
 ```
+
 // потом добавление useState & useEffect
+```tsx
+import { useEffect } from "react";
+
+const ComponentA = () => {
+  console.log("a");
+  useEffect(() => console.log("effectA"), []);
+  return <img src="example.png" />;
+};
+
+const ComponentB = () => {
+  console.log("b");
+  useEffect(() => console.log("effectB"), []);
+  return <ComponentA />;
+};
+
+const ComponentC = () => {
+  console.log("c");
+  useEffect(() => console.log("effectC"), []);
+  return <ComponentB />;
+};
+
+export default function App() {
+  return <ComponentC />;
+};
+```
 
 Что будет раньше setState или console.log?
 
